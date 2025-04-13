@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serenity Hub</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/games.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-wrapper">
+                <img src="{{ url_for('static', filename='images/logo2.png')}}" alt="Logo" class="logo-img">
+                <a href="/" class="logo">Serenity Hub</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/games">Games</a></li>
+                <li><a href="/bot">Bot</a></li>
+                <li><a href="/music">Music</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+    <button class="dashboard" id="dashboardBtn" data-dashboard-url="{{ url_for('dashboard') }}">
+        Go To Dashboard
+    </button>
+    <main class="games-container">
+        <h1 class="page-title">Mindful Games Collection</h1>
+            <div class="games-grid">
+                <div class="game-card">
+                    <div class="game-icon"><i class="fas fa-brain"></i></div>
+                    <h3>Memory Test</h3>
+                    <p>Remember and recall sequences or patterns to challenge your short-term memory</p>
+                    <a href="static/Games/memorytest.html"><button class="play-button">Play</button></a>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon"><i class="fas fa-palette"></i></div>
+                    <h3>Color Match Puzzle</h3>
+                    <p>Match colors quickly before time runs out to test your visual memory</p>
+                    <a href="static/Games/colormatch.html"><button class="play-button">Play</button></a>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon"><i class="fas fa-search"></i></div>
+                    <h3> Word Search</h3>
+                    <p>Find hidden words in a grid as fast as possible to challenge your vocabulary</p>
+                    <a href="static/Games/wordSearch.html"><button class="play-button">Play</button></a>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon"><i class="fas fa-square-root-alt"></i></div>
+                    <h3>Math Quiz</h3>
+                    <p>Solve quick math problems to boost your calculation speed and accuracy</p>
+                    <a href="static/Games/mathQuiz.html"><button class="play-button">Play</button></a>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon"><i class="fas fa-th"></i></div>
+                    <h3>Pattern Match</h3>
+                    <p>Identify and recreate patterns to test your attention to detail</p>
+                    <a href="static/Games/patternmatch.html"><button class="play-button">Play</button></a>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon"><i class="fas fa-bolt"></i></div>
+                    <h3>Reaction Test</h3>
+                    <p>Click as fast as possible when prompted to measure your reflex speed</p>
+                    <a href="static/Games/reactionTest.html"><button class="play-button">Play</button></a>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon"><i class="fas fa-keyboard"></i></div>
+                    <h3>Typing Speed</h3>
+                    <p>Type given words or sentences accurately to test your typing speed</p>
+                    <a href="static/Games/typingSpeed.html"><button class="play-button">Play</button></a>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon"><i class="fas fa-route"></i></div>
+                    <h3>Maze Game</h3>
+                    <p>Navigate through a complex maze to reach the finish line before time runs out</p>
+                    <a href="static/Games/mazegame.html"><button class="play-button">Play</button></a>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon"><i class="fas fa-lightbulb"></i></div>
+                    <h3>Simon Says</h3>
+                    <p>Follow the pattern of lights and sounds in the correct order to win</p>
+                    <a href="static/Games/simonSays.html"><button class="play-button">Play</button></a>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon"><i class="fas fa-fish"></i></div>
+                    <h3>Fishing Game</h3>
+                    <p>Catch as many fish as possible while avoiding obstacles in a limited time</p>
+                    <a href="static/Games/fishingGame.html"><button class="play-button">Play</button></a>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon"><i class="fas fa-futbol"></i></div>
+                    <h3>Penalty Shootout</h3>
+                    <p>Aim and shoot to score goals while the goalkeeper tries to block you</p>
+                    <a href="static/Games/penultyShootout.html"><button class="play-button">Play</button></a>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon"><i class="fas fa-times-circle"></i></div>
+                    <h3>Tic Tac Toe</h3>
+                    <p> Challenge an AI or a friend in this classic three-in-a-row strategy game</p>
+                    <a href="static/Games/tic-tac-toe.html"><button class="play-button">Play</button></a>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon"><i class="fas fa-dragon"></i></div>
+                    <h3>Snake Game</h3>
+                    <p>Control the snake to eat food and grow while avoiding collisions</p>
+                    <a href="static/Games/snake.html"><button class="play-button">Play</button></a>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon"><i class="fas fa-cubes"></i></div>
+                    <h3>Tetris</h3>
+                    <p>Stack falling blocks strategically to clear lines and score points</p>
+                    <a href="static/Games/tetris.html"><button class="play-button">Play</button></a>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon"><i class="fas fa-table-tennis"></i></div>
+                    <h3>Ping Pong</h3>
+                    <p>Rally against an opponent and keep the ball in play to win</p>
+                    <a href="static/Games/ping-pong.html"><button class="play-button">Play</button></a>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon"><i class="fas fa-table"></i></div>
+                    <h3>Breakout</h3>
+                    <p>Bounce a ball to break all bricks without letting it fall off the paddle</p>
+                    <a href="static/Games/breakout.html"><button class="play-button">Play</button></a>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon"><i class="fas fa-space-shuttle"></i></div>
+                    <h3>Space Shooter</h3>
+                    <p>Pilot a spaceship and destroy incoming enemies to survive</p>
+                    <a href="static/Games/spaceShooter.html"><button class="play-button">Play</button></a>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon"><i class="fas fa-car"></i></div>
+                    <h3>Car Racing</h3>
+                    <p>Navigate a track at high speeds while avoiding obstacles and opponents</p>
+                    <a href="static/Games/carRacing.html"><button class="play-button">Play</button></a>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon"><i class="fas fa-bomb"></i></div>
+                    <h3>Bubble Pop</h3>
+                    <p>Pop bubbles of the same color to clear the board and earn points</p>
+                    <a href="static/Games/bubblepop.html"><button class="play-button">Play</button></a>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon"><i class="fas fa-eye"></i></div>
+                    <h3>Spot the Difference</h3>
+                    <p>Compare images and spot the hidden differences before time runs out</p>
+                    <a href="static/Games/spotTheDifference.html"><button class="play-button">Play</button></a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="{{ url_for('static', filename = 'js/games.js') }}"></script>
+</body>
+</html>
