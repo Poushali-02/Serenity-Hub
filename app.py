@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def main():
-    return redirect(url_for("signup"))
+    return render_template('index.html')
 
 @app.route("/games")
 def games():
