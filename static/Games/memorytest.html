@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Memory Test Game | Serenity Hub</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #dbdbdb;
+      color: #706D54;
+      text-align: center;
+      padding: 2rem;
+    }
+  
+    h1 {
+      color: #706D54;
+    }
+  
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      grid-gap: 15px;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+  
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: #A08963;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+    }
+  
+    .box.active {
+      background-color: #DBDBDB;
+      box-shadow: 0 0 20px #C9B194;
+      border: 2px solid #C9B194;
+    }
+  
+    .message {
+      margin-top: 1.5rem;
+      font-size: 1.2rem;
+    }
+  
+    .score {
+      margin-top: 1rem;
+      font-size: 1rem;
+      color: #706D54;
+    }
+  
+    .controls {
+      margin-top: 2rem;
+    }
+  
+    button, select {
+      margin: 0.5rem;
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #706D54;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  
+    button:hover, select:hover {
+      background-color: #A08963;
+    }
+  </style>
+  
+</head>
+<body>
+
+  <h1>🧠 Memory Test Game</h1>
+  <p>Choose a difficulty and test your memory!</p>
+
+  <div class="controls">
+    <label for="difficulty">Difficulty:</label>
+    <select id="difficulty">
+      <option value="easy">Easy</option>
+      <option value="medium" selected>Medium</option>
+      <option value="hard">Hard</option>
+    </select>
+    <button onclick="startGame()">Start</button>
+  </div>
+
+  <div class="grid" id="grid"></div>
+
+  <div class="score" id="scoreDisplay">Score: 0</div>
+  <div class="message" id="message">Click "Start" to begin!</div>
+
+  <script>
+    const grid = document.getElementById("grid");
+    const message = document.getElementById("message");
+    const scoreDisplay = document.getElementById("scoreDisplay");
+    const difficultySelect = document.getElementById("difficulty");
+
+    let sequence = [];
+    let userSequence = [];
+    let clickable = false;
+    let score = 0;
+    let delayTime = 600;
+    const boxes = [];
+
+    function createBoxes() {
+      for (let i = 0; i < 9; i++) {
+        const box = document.createElement("div");
+        box.classList.add("box");
+        box.dataset.index = i;
+        box.addEventListener("click", () => {
+          if (!clickable) return;
+          const index = parseInt(box.dataset.index);
+          userSequence.push(index);
+          flashBox(index);
+
+          if (userSequence[userSequence.length - 1] !== sequence[userSequence.length - 1]) {
+            message.textContent = "❌ Wrong sequence! Try again.";
+            clickable = false;
+            return;
+          }
+
+          if (userSequence.length === sequence.length) {
+            score++;
+            updateScore();
+            message.textContent = "✅ Correct! Get ready for the next round.";
+            clickable = false;
+            setTimeout(nextRound, 1000);
+          }
+        });
+        boxes.push(box);
+        grid.appendChild(box);
+      }
+    }
+
+    function flashBox(index) {
+      const box = boxes[index];
+      box.classList.add("active");
+      setTimeout(() => {
+        box.classList.remove("active");
+      }, delayTime / 1.5);
+    }
+
+    function playSequence() {
+      let delay = delayTime;
+      sequence.forEach((index, i) => {
+        setTimeout(() => flashBox(index), i * delay + 500);
+      });
+      setTimeout(() => {
+        clickable = true;
+        userSequence = [];
+      }, sequence.length * delay + 500);
+    }
+
+    function nextRound() {
+      const next = Math.floor(Math.random() * 9);
+      sequence.push(next);
+      playSequence();
+    }
+
+    function updateScore() {
+      scoreDisplay.textContent = `Score: ${score}`;
+    }
+
+    function startGame() {
+      sequence = [];
+      userSequence = [];
+      score = 0;
+      updateScore();
+      message.textContent = "Watch the pattern...";
+
+      // Set delayTime based on difficulty
+      const difficulty = difficultySelect.value;
+      if (difficulty === "easy") delayTime = 1000;
+      else if (difficulty === "medium") delayTime = 600;
+      else delayTime = 300; // hard
+
+      nextRound();
+    }
+
+    createBoxes();
+  </script>
+
+</body>
+</html>
